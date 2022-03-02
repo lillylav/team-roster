@@ -4,8 +4,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 getInfo = function() {
-    const manager = Manager.managerInput();
-    console.log(manager);
+    Manager.managerInput();
     addNewTeamMember();
 
 };
