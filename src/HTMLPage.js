@@ -2,7 +2,70 @@ const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('Intern');
 
-// return`
+
+generateEngineers = employees => {
+    //forEach but that won't work because they are not organized by type...
+        return`
+<div class="column is-one-quarter">
+    <div class="box">
+        <div class="has-background-info p-3">
+            <h2 class="subtitle is-4 has-text-white mb-2">
+                ${employees.Engineer[i].name}
+            </h2>
+            <h3 class="subtitle is-6 has-text-white">
+                Manager
+            </h3>
+            <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <div>
+            <div class="box mb-0 pt-2 pb-2 mt-4">
+                ID: ${employees.Engineer[i].employeeId}
+            </div>
+            <div class="box mb-0 pt-2 pb-2">
+                Email: <a href="mailto:${employees.Engineer[i].email}">${employees.Manager.email}</a>
+            </div>
+            <div class="box mb-0 pt-2 pb-2">
+                Office Number: ${employees.Engineer[i].officeNumber}
+            </div>
+        </div>
+    </div>
+</div>
+`
+};
+
+generateInterns = employees => {
+    //forEach but that won't work because they are not organized by type...
+        return`
+<div class="column is-one-quarter">
+    <div class="box">
+        <div class="has-background-info p-3">
+            <h2 class="subtitle is-4 has-text-white mb-2">
+                ${employees.Engineer[i].name}
+            </h2>
+            <h3 class="subtitle is-6 has-text-white">
+                Manager
+            </h3>
+            <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <div>
+            <div class="box mb-0 pt-2 pb-2 mt-4">
+                ID: ${employees.Engineer[i].employeeId}
+            </div>
+            <div class="box mb-0 pt-2 pb-2">
+                Email: <a href="mailto:${employees.Engineer[i].email}">${employees.Manager.email}</a>
+            </div>
+            <div class="box mb-0 pt-2 pb-2">
+                Office Number: ${employees.Engineer[i].officeNumber}
+            </div>
+        </div>
+    </div>
+</div>
+`
+};
+
+generateRoster = employees => {
+
+    return`
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,7 +86,7 @@ const Intern = require('Intern');
                 <div class="box">
                     <div class="has-background-info p-3">
                         <h2 class="subtitle is-4 has-text-white mb-2">
-                            Cherry
+                            ${employees.Manager.name}
                         </h2>
                         <h3 class="subtitle is-6 has-text-white">
                             Manager
@@ -32,19 +95,21 @@ const Intern = require('Intern');
                     </div>
                     <div>
                         <div class="box mb-0 pt-2 pb-2 mt-4">
-                            ID: 1
+                            ID: ${employees.Manager.employeeId}
                         </div>
                         <div class="box mb-0 pt-2 pb-2">
-                            Email: <a href="mailto: jhaskf@jkh.com">sdfjk@kjshf.com</a>
+                            Email: <a href="mailto:${employees.Manager.email}">${employees.Manager.email}</a>
                         </div>
                         <div class="box mb-0 pt-2 pb-2">
-                            Office Number: 1
+                            Office Number: ${employees.Manager.officeNumber}
                         </div>
                     </div>
                 </div>
             </div>
-
+            ${generateEngineers(employees)}
+            ${generateInterns(employees)}
         </section>
     </body>
 </html>
-//`
+`
+};

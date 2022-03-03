@@ -4,6 +4,7 @@ const path = require('path');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const employees = [];
 
 
 // get user input for manager object
@@ -75,27 +76,12 @@ promptManager = () => {
         // send prompt info to Manager object
         const managerInfo = new Manager(manager.name, manager.employeeId, manager.email, manager.officeNumber);
         console.log(managerInfo);
-        
-        // user prompt for adding a new team member
-        inquirer.prompt([
-            {
-                type: 'confirm',
-                name: 'newTeamMember',
-                message: "Would you like to add more team members?",
-                default: false
-            }
 
-// THIS DON'T WORK :(
+        // push to employees array
+        employees.push(managerInfo);
 
-        ]).then((newTeamMember) => {
-            if (newTeamMember === false) {
-                // if new team member prompt is false end the loop
-                return;
-            } else {
-                // if new team member prompt is true what TYPE of new team member do we add?
-                addNewTeamMember();
-            }
-        });
+        // prompt new team member
+        addNewTeamMember();
     });
 };
 
@@ -170,26 +156,11 @@ promptEngineer = () => {
         const engineerInfo = new Engineer(engineer.name, engineer.employeeId, engineer.email, engineer.github);
         console.log(engineerInfo);
 
-        // user prompt for adding a new team member
-        inquirer.prompt([
-            {
-                type: 'confirm',
-                name: 'newTeamMember',
-                message: "Would you like to add more team members?",
-                default: false
-            }
+        // push to employees array
+        employees.push(engineerInfo);
 
-// THIS DON'T WORK :(
-
-        ]).then((newTeamMember) => {
-            if (newTeamMember === false) {
-                // if new team member prompt is false end the loop
-                return;
-            } else {
-                // if new team member prompt is true what TYPE of new team member do we add?
-                addNewTeamMember();
-            }
-        });
+        // prompt new team member
+        addNewTeamMember();
     });
 };
 
@@ -264,26 +235,11 @@ promptIntern = () => {
         const internInfo = new Intern(intern.name, intern.employeeId, intern.email, intern.school);
         console.log(internInfo);
 
-        // user prompt for adding a new team member
-        inquirer.prompt([
-            {
-                type: 'confirm',
-                name: 'newTeamMember',
-                message: "Would you like to add more team members?",
-                default: false
-            }
+        // push to employees array
+        employees.push(internInfo);
 
-// THIS DON'T WORK :(
-
-        ]).then((newTeamMember) => {
-            if (newTeamMember === false) {
-                // if new team member prompt is false end the loop
-                return;
-            } else {
-                // if new team member prompt is true what TYPE of new team member do we add?
-                addNewTeamMember();
-            }
-        });
+        // prompt new team member
+        addNewTeamMember();
     });
 };
 
@@ -295,17 +251,19 @@ addNewTeamMember = function() {
         {
             type: 'list',
             name: 'eOrI',
-            message: "Would you like to add a new Engineer or Intern?",
-            choices: ['New Engineer', 'New Intern']            
+            message: "Would you like to add a new Engineer, new Intern, or is your team complete?",
+            choices: ['New Engineer', 'New Intern', 'Complete']            
         }
     ]).then(({ eOrI}) => {
             if(eOrI === 'New Engineer') {
                 // if engineer is selected, run prompt engineer prompts
                 promptEngineer();
-            }
-            if(eOrI === 'New Intern') {
+            } else if(eOrI === 'New Intern') {
                 // if intern is selected, run prompt intern prompts
                 promptIntern();
+            } else if(eOrI === 'Complete') {
+                console.log(employees);
+                // generateRoster(employees);
             }
         });
 };
