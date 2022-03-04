@@ -1,11 +1,17 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
+const HTMLPage = require('./src/HTMLPage');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const employees = [];
+const pathToDist = path.resolve(__dirname, 'dist');
+const HTMLToDist = path.join(pathToDist, 'index.html');
 
+const employees = [];
+const managerArr = [];
+const engineersArr = [];
+const internsArr = []
 
 // get user input for manager object
 promptManager = () => {
@@ -75,10 +81,14 @@ promptManager = () => {
     ]).then((manager) => {
         // send prompt info to Manager object
         const managerInfo = new Manager(manager.name, manager.employeeId, manager.email, manager.officeNumber);
-        console.log(managerInfo);
 
-        // push to employees array
-        employees.push(managerInfo);
+        // push to managerArr
+        managerArr.push(managerInfo);
+
+        console.log(managerArr);
+
+        // // push to employees array
+        // employees.push(managerInfo);
 
         // prompt new team member
         addNewTeamMember();
@@ -142,8 +152,8 @@ promptEngineer = () => {
             type: 'text',
             name: 'github',
             message: "What's this engineer's github username? (Required)",
-            validate: officeInput => {
-                if (officeInput) {
+            validate: githubInput => {
+                if (githubInput) {
                     return true;
                 } else {
                     console.log("Please enter this engineer's github username!");
@@ -153,11 +163,15 @@ promptEngineer = () => {
         }
     ]).then((engineer) => {
         // send prompt info to Engineer object
-        const engineerInfo = new Engineer(engineer.name, engineer.employeeId, engineer.email, engineer.github);
-        console.log(engineerInfo);
+        const engineersInfo = new Engineer(engineer.name, engineer.employeeId, engineer.email, engineer.github);
+        
+        // push to managerArr
+        engineersArr.push(engineersInfo);
 
-        // push to employees array
-        employees.push(engineerInfo);
+        console.log(engineersArr);
+
+        // // push to employees array
+        // employees.push(engineerInfo);
 
         // prompt new team member
         addNewTeamMember();
@@ -232,11 +246,15 @@ promptIntern = () => {
         }
     ]).then((intern) => {
         // send prompt info to Intern object
-        const internInfo = new Intern(intern.name, intern.employeeId, intern.email, intern.school);
-        console.log(internInfo);
+        const internsInfo = new Intern(intern.name, intern.employeeId, intern.email, intern.school);
+        
+        // push to managerArr
+        internsArr.push(internsInfo);
 
-        // push to employees array
-        employees.push(internInfo);
+        console.log(internsArr);
+
+        // // push to employees array
+        // employees.push(internInfo);
 
         // prompt new team member
         addNewTeamMember();
@@ -262,12 +280,21 @@ addNewTeamMember = function() {
                 // if intern is selected, run prompt intern prompts
                 promptIntern();
             } else if(eOrI === 'Complete') {
+                employees.push(managerArr);
+                employees.push(engineersArr);
+                employees.push(internsArr);
+
                 console.log(employees);
-                // generateRoster(employees);
+
+                generateRoster();
             }
         });
 };
 
+// generate HTML page
+generateRoster = () => {
+    fs.writeFileSync(HTMLToDist, HTMLPage(employees), 'utf-8');
+};
 
 // start promptManager function
 promptManager();

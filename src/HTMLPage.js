@@ -1,70 +1,118 @@
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('Intern');
+// 
+generateEmployees = teamArray => {
+    const { manager, engineers, interns } = teamArray;
 
+    console.log(manager);
+    console.log(engineers);
+    console.log(interns);
 
-generateEngineers = employees => {
-    //forEach but that won't work because they are not organized by type...
+    // create manager card
+    generateManager = Manager => {
+
         return`
-<div class="column is-one-quarter">
-    <div class="box">
-        <div class="has-background-info p-3">
-            <h2 class="subtitle is-4 has-text-white mb-2">
-                ${employees.Engineer[i].name}
-            </h2>
-            <h3 class="subtitle is-6 has-text-white">
-                Manager
-            </h3>
-            <i class="fa-solid fa-mug-hot"></i>
-        </div>
-        <div>
-            <div class="box mb-0 pt-2 pb-2 mt-4">
-                ID: ${employees.Engineer[i].employeeId}
+    <div class="column is-one-quarter">
+        <div class="box">
+            <div class="has-background-info p-3">
+                <h2 class="subtitle is-4 has-text-white mb-2">
+                    ${Manager.getName()}
+                </h2>
+                <h3 class="subtitle is-6 has-text-white">
+                    ${Manager.getRole()}
+                </h3>
+                <i class="fa-solid fa-mug-hot"></i>
             </div>
-            <div class="box mb-0 pt-2 pb-2">
-                Email: <a href="mailto:${employees.Engineer[i].email}">${employees.Manager.email}</a>
-            </div>
-            <div class="box mb-0 pt-2 pb-2">
-                Office Number: ${employees.Engineer[i].officeNumber}
+            <div>
+                <div class="box mb-0 pt-2 pb-2 mt-4">
+                    ID: ${Manager.getId()}
+                </div>
+                <div class="box mb-0 pt-2 pb-2">
+                    Email: <a href="mailto:${Manager.getEmail()}" target="_blank">${Manager.getEmail()}</a>
+                </div>
+                <div class="box mb-0 pt-2 pb-2">
+                    Office Number: 
+                </div>
             </div>
         </div>
     </div>
-</div>
-`
-};
-
-generateInterns = employees => {
-    //forEach but that won't work because they are not organized by type...
-        return`
-<div class="column is-one-quarter">
-    <div class="box">
-        <div class="has-background-info p-3">
-            <h2 class="subtitle is-4 has-text-white mb-2">
-                ${employees.Engineer[i].name}
-            </h2>
-            <h3 class="subtitle is-6 has-text-white">
-                Manager
-            </h3>
-            <i class="fa-solid fa-mug-hot"></i>
-        </div>
-        <div>
-            <div class="box mb-0 pt-2 pb-2 mt-4">
-                ID: ${employees.Engineer[i].employeeId}
+    `
+    };
+    //${Manager.getOfficeNumber()}
+    // create engineer cards
+    generateEngineers = Engineer => {
+        //forEach but that won't work because they are not organized in an array by type...
+            return`
+    <div class="column is-one-quarter">
+        <div class="box">
+            <div class="has-background-info p-3">
+                <h2 class="subtitle is-4 has-text-white mb-2">
+                    ${Engineer.getName()}
+                </h2>
+                <h3 class="subtitle is-6 has-text-white">
+                    ${Engineer.getRole()}
+                </h3>
+                <i class="fa-solid fa-mug-hot"></i>
             </div>
-            <div class="box mb-0 pt-2 pb-2">
-                Email: <a href="mailto:${employees.Engineer[i].email}">${employees.Manager.email}</a>
-            </div>
-            <div class="box mb-0 pt-2 pb-2">
-                Office Number: ${employees.Engineer[i].officeNumber}
+            <div>
+                <div class="box mb-0 pt-2 pb-2 mt-4">
+                    ID: ${Engineer.getId()}
+                </div>
+                <div class="box mb-0 pt-2 pb-2">
+                    Email: <a href="mailto:${Engineer.getEmail()}" target="_blank">${Engineer.getEmail()}</a>
+                </div>
+                <div class="box mb-0 pt-2 pb-2">
+                    Github: 
+                </div>
             </div>
         </div>
     </div>
-</div>
-`
+    `
+    };
+    // <a href="github.com/${Engineer.getGithub()}" target="_blank">${Engineer.getGithub()}</a>
+    // create intern cards
+    generateInterns = Intern => {
+        //forEach but that won't work because they are not organized in an array by type...
+            return`
+    <div class="column is-one-quarter">
+        <div class="box">
+            <div class="has-background-info p-3">
+                <h2 class="subtitle is-4 has-text-white mb-2">
+                    ${Intern.getName()}
+                </h2>
+                <h3 class="subtitle is-6 has-text-white">
+                    ${Intern.getRole()}
+                </h3>
+                <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div>
+                <div class="box mb-0 pt-2 pb-2 mt-4">
+                    ID: ${Intern.getId()}
+                </div>
+                <div class="box mb-0 pt-2 pb-2">
+                    Email: <a href="mailto:${Intern.getEmail()}" target="_blank">${Intern.getEmail()}</a>
+                </div>
+                <div class="box mb-0 pt-2 pb-2">
+                    School: 
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    };
+    // ${Intern.getSchool()}
+
+    const teamCards = [];
+
+    // teamCards.push(teamArray.map(Manager => generateManager(Manager)));
+    // teamCards.push(teamArray.map(Engineer => generateEngineers(Engineer)));
+    // teamCards.push(teamArray.map(Intern => generateInterns(Intern)));
+
+    // console.log(teamCards);
+
+    return teamCards.join('');
 };
 
-generateRoster = employees => {
-
+// generate entire webpage
+module.exports = employees => {
     return`
 <!DOCTYPE html>
 <html lang="en">
@@ -82,32 +130,7 @@ generateRoster = employees => {
             </h1>
         </div>
         <section>
-            <div class="column is-one-quarter">
-                <div class="box">
-                    <div class="has-background-info p-3">
-                        <h2 class="subtitle is-4 has-text-white mb-2">
-                            ${employees.Manager.name}
-                        </h2>
-                        <h3 class="subtitle is-6 has-text-white">
-                            Manager
-                        </h3>
-                        <i class="fa-solid fa-mug-hot"></i>
-                    </div>
-                    <div>
-                        <div class="box mb-0 pt-2 pb-2 mt-4">
-                            ID: ${employees.Manager.employeeId}
-                        </div>
-                        <div class="box mb-0 pt-2 pb-2">
-                            Email: <a href="mailto:${employees.Manager.email}">${employees.Manager.email}</a>
-                        </div>
-                        <div class="box mb-0 pt-2 pb-2">
-                            Office Number: ${employees.Manager.officeNumber}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            ${generateEngineers(employees)}
-            ${generateInterns(employees)}
+            ${generateEmployees(employees)}
         </section>
     </body>
 </html>
