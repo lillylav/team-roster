@@ -11,6 +11,7 @@ This command line application allows you to build an HTML page with details abou
 - CSS (Bulma)
 - JavaScript
 - Node.js (Inquirer, File System, Path)
+- Jest for Testing
 - Object Oriented Programming
 - Test Driven Development
 
