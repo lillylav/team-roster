@@ -8,10 +8,13 @@ const Intern = require('./lib/Intern');
 const pathToDist = path.resolve(__dirname, 'dist');
 const HTMLToDist = path.join(pathToDist, 'index.html');
 
+// arrays
 const employees = [];
 const managerArr = [];
 const engineersArr = [];
 const internsArr = []
+
+
 
 // get user input for manager object
 promptManager = () => {
@@ -84,11 +87,6 @@ promptManager = () => {
 
         // push to managerArr
         managerArr.push(managerInfo);
-
-        console.log(managerArr);
-
-        // // push to employees array
-        // employees.push(managerInfo);
 
         // prompt new team member
         addNewTeamMember();
@@ -168,11 +166,6 @@ promptEngineer = () => {
         // push to managerArr
         engineersArr.push(engineersInfo);
 
-        console.log(engineersArr);
-
-        // // push to employees array
-        // employees.push(engineerInfo);
-
         // prompt new team member
         addNewTeamMember();
     });
@@ -251,11 +244,6 @@ promptIntern = () => {
         // push to managerArr
         internsArr.push(internsInfo);
 
-        console.log(internsArr);
-
-        // // push to employees array
-        // employees.push(internInfo);
-
         // prompt new team member
         addNewTeamMember();
     });
@@ -283,8 +271,6 @@ addNewTeamMember = function() {
                 employees.push(managerArr);
                 employees.push(engineersArr);
                 employees.push(internsArr);
-
-                console.log(employees);
 
                 generateRoster();
             }

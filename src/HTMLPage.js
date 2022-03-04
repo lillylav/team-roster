@@ -1,112 +1,117 @@
-// 
+// function to create employee cards by type
 generateEmployees = teamArray => {
-    const { manager, engineers, interns } = teamArray;
-
-    console.log(manager);
-    console.log(engineers);
-    console.log(interns);
+    // destructure array into manager, engineer, and intern arrays
+    const [ managerArr, engineerArr, internArr ] = teamArray;
 
     // create manager card
     generateManager = Manager => {
 
         return`
-    <div class="column is-one-quarter">
-        <div class="box">
-            <div class="has-background-info p-3">
-                <h2 class="subtitle is-4 has-text-white mb-2">
-                    ${Manager.getName()}
-                </h2>
-                <h3 class="subtitle is-6 has-text-white">
-                    ${Manager.getRole()}
-                </h3>
-                <i class="fa-solid fa-mug-hot"></i>
+            <div class="column is-flex-direction-column is-one-third">
+                <div class="box">
+                    <div class="has-background-info p-3">
+                        <h2 class="subtitle is-3 has-text-white mb-2">
+                            ${Manager.getName()}
+                        </h2>
+                        <h3 class="subtitle is-4 has-text-white">
+                            <img src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/FEFEFE/external-mug-food-royyan-wijaya-detailed-outline-royyan-wijaya-2.png"/>
+                            ${Manager.getRole()}
+                        </h3>
+                    </div>
+                    <div>
+                        <div class="box mb-0 pt-2 pb-2 mt-4">
+                            Employee ID: ${Manager.getId()}
+                        </div>
+                        <div class="box mb-0 pt-2 pb-2">
+                            Email: <a href="mailto:${Manager.getEmail()}" target="_blank">${Manager.getEmail()}</a>
+                        </div>
+                        <div class="box mb-0 pt-2 pb-2">
+                            Office Number: ${Manager.getOfficeNumber()}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <div class="box mb-0 pt-2 pb-2 mt-4">
-                    ID: ${Manager.getId()}
-                </div>
-                <div class="box mb-0 pt-2 pb-2">
-                    Email: <a href="mailto:${Manager.getEmail()}" target="_blank">${Manager.getEmail()}</a>
-                </div>
-                <div class="box mb-0 pt-2 pb-2">
-                    Office Number: 
-                </div>
-            </div>
-        </div>
-    </div>
     `
     };
-    //${Manager.getOfficeNumber()}
+
+
     // create engineer cards
     generateEngineers = Engineer => {
         //forEach but that won't work because they are not organized in an array by type...
             return`
-    <div class="column is-one-quarter">
-        <div class="box">
-            <div class="has-background-info p-3">
-                <h2 class="subtitle is-4 has-text-white mb-2">
-                    ${Engineer.getName()}
-                </h2>
-                <h3 class="subtitle is-6 has-text-white">
-                    ${Engineer.getRole()}
-                </h3>
-                <i class="fa-solid fa-mug-hot"></i>
+            <div class="column is-flex-direction-column is-one-third">
+                <div class="box">
+                    <div class="has-background-info p-3">
+                        <h2 class="subtitle is-3 has-text-white mb-2">
+                            ${Engineer.getName()}
+                        </h2>
+                        <h3 class="subtitle is-4 has-text-white">
+                            <img src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/FEFEFE/external-glasses-retro-those-icons-lineal-those-icons.png"/>
+                            ${Engineer.getRole()}
+                        </h3>
+                    </div>
+                    <div>
+                        <div class="box mb-0 pt-2 pb-2 mt-4">
+                            Employee ID: ${Engineer.getId()}
+                        </div>
+                        <div class="box mb-0 pt-2 pb-2">
+                            Email: <a href="mailto:${Engineer.getEmail()}" target="_blank">${Engineer.getEmail()}</a>
+                        </div>
+                        <div class="box mb-0 pt-2 pb-2">
+                            Github: <a href="github.com/${Engineer.getGithub()}" target="_blank">${Engineer.getGithub()}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <div class="box mb-0 pt-2 pb-2 mt-4">
-                    ID: ${Engineer.getId()}
-                </div>
-                <div class="box mb-0 pt-2 pb-2">
-                    Email: <a href="mailto:${Engineer.getEmail()}" target="_blank">${Engineer.getEmail()}</a>
-                </div>
-                <div class="box mb-0 pt-2 pb-2">
-                    Github: 
-                </div>
-            </div>
-        </div>
-    </div>
     `
     };
-    // <a href="github.com/${Engineer.getGithub()}" target="_blank">${Engineer.getGithub()}</a>
+
+
     // create intern cards
     generateInterns = Intern => {
         //forEach but that won't work because they are not organized in an array by type...
             return`
-    <div class="column is-one-quarter">
-        <div class="box">
-            <div class="has-background-info p-3">
-                <h2 class="subtitle is-4 has-text-white mb-2">
-                    ${Intern.getName()}
-                </h2>
-                <h3 class="subtitle is-6 has-text-white">
-                    ${Intern.getRole()}
-                </h3>
-                <i class="fa-solid fa-mug-hot"></i>
+            <div class="column is-flex-direction-column is-one-third">
+                <div class="box">
+                    <div class="has-background-info p-3">
+                        <h2 class="subtitle is-3 has-text-white mb-2">
+                            ${Intern.getName()}
+                        </h2>
+                        <h3 class="subtitle is-4 has-text-white">
+                        <img src="https://img.icons8.com/ios/24/FEFEFE/student-female.png"/>
+                            ${Intern.getRole()}
+                        </h3>
+                    </div>
+                    <div>
+                        <div class="box mb-0 pt-2 pb-2 mt-4">
+                            Employee ID: ${Intern.getId()}
+                        </div>
+                        <div class="box mb-0 pt-2 pb-2">
+                            Email: <a href="mailto:${Intern.getEmail()}" target="_blank">${Intern.getEmail()}</a>
+                        </div>
+                        <div class="box mb-0 pt-2 pb-2">
+                            School: ${Intern.getSchool()}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <div class="box mb-0 pt-2 pb-2 mt-4">
-                    ID: ${Intern.getId()}
-                </div>
-                <div class="box mb-0 pt-2 pb-2">
-                    Email: <a href="mailto:${Intern.getEmail()}" target="_blank">${Intern.getEmail()}</a>
-                </div>
-                <div class="box mb-0 pt-2 pb-2">
-                    School: 
-                </div>
-            </div>
-        </div>
-    </div>
     `
     };
-    // ${Intern.getSchool()}
 
     const teamCards = [];
 
-    // teamCards.push(teamArray.map(Manager => generateManager(Manager)));
-    // teamCards.push(teamArray.map(Engineer => generateEngineers(Engineer)));
-    // teamCards.push(teamArray.map(Intern => generateInterns(Intern)));
+    teamCards.push(managerArr.map(Manager => generateManager(Manager)));
+    teamCards.push(engineerArr.map(Engineer => generateEngineers(Engineer)));
+    teamCards.push(internArr.map(Intern => generateInterns(Intern)));
 
-    // console.log(teamCards);
+    console.log(`
+    ------------------------------------------------------------
+    
+                A Team Roster has been generated!
+
+        Go to the index.html file in the dist folder to view!
+
+    ------------------------------------------------------------`)
 
     return teamCards.join('');
 };
@@ -120,7 +125,6 @@ module.exports = employees => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"></link>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         <title>Team Roster</title>
     </head>
     <body>
@@ -129,7 +133,7 @@ module.exports = employees => {
                 My Team
             </h1>
         </div>
-        <section>
+        <section class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center">
             ${generateEmployees(employees)}
         </section>
     </body>
