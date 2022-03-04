@@ -10,10 +10,7 @@ This command line application allows you to build an HTML page with details abou
 - HTML
 - CSS (Bulma)
 - JavaScript
-- Node.js
--- Inquirer
--- File System
--- Path
+- Node.js (Inquirer, File System, Path)
 - Object Oriented Programming
 - Test Driven Development
 
