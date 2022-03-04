@@ -25,7 +25,7 @@ This application can be used to quickly create a team HTML page from the command
 Each object in this application has a test which you can run from the command line with the command "npm run test".
 
 ## Link to Walkthrough Video
-https://drive.google.com/file/d/1u5jEEARsbn8DVPn51e9d5psM0NS505Hl/view
+https://drive.google.com/file/d/1klOS6n8fSZgs8il_FjBcIjwu51INBgjK/view
 
 ## Questions
 ### Github: lillylav
