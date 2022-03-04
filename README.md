@@ -27,6 +27,6 @@ Each object in this application has a test which you can run from the command li
 https://drive.google.com/file/d/1u5jEEARsbn8DVPn51e9d5psM0NS505Hl/view
 
 ### Questions
-Github: lillylav
-Email: lilly.leiran@gmail.com
+####Github: lillylav
+####Email: lilly.leiran@gmail.com
 Please reach out to me with questions via email and provide the repository name in the subject line.
